@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Scalable DDoS Detection System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Case Study: Scalable DDoS Detection System with Graph Neural Networks</h1>
+    </header>
+
+    <main>
+        <!-- Project Overview -->
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <p>During my internship at Exposys Data Labs, I was entrusted with developing a scalable DDoS detection system to safeguard network infrastructure from Distributed Denial of Service (DDoS) attacks. The project aimed to create an advanced detection mechanism that could handle dynamic, high-volume network traffic in real-time. The primary challenge was to develop a solution that could accurately identify malicious traffic without introducing excessive false positives and with minimal latency.
+
+            </p>
+        </section>
+
+        <!-- Problem Statement -->
+        <section id="problem-statement">
+            <h2>Problem Statement</h2>
+            <p><strong>Challenge:</strong>DDoS attacks have evolved significantly over the years, becoming more sophisticated and difficult to detect using traditional methods. Attackers employ various techniques such as flooding the network with illegitimate requests, which could potentially overwhelm defenses. The existing systems were either inadequate in real-time detection capabilities or too prone to false alarms due to the imbalance between normal traffic and attacks.</p>
+            <p><strong>Goal:</strong>The goal was to design a model that could effectively identify DDoS attacks amidst legitimate traffic, ensuring high detection accuracy and low false positive rates. This required an innovative approach that could capture the complex interactions within network data, which is inherently graph-structured.</p>
+        </section>
+
+        <!-- Approach -->
+        <section id="approach">
+            <h2>Approach</h2>
+            <p><strong>Modeling Technique:</strong> : I adopted Graph Neural Networks (GNNs) to model network traffic data. The network traffic was treated as a graph where each data point (network packet) represented a node, and the relationships between packets (such as timestamps and packet types) formed the edges. This approach allowed the model to learn from the graph structure, capturing the intricate patterns in the data that are characteristic of DDoS attacks.
+                <h3><strong>Data Preprocessing:</strong>
+                </h3>
+                <ul>
+                <li><strong>Feature Scaling:</strong> Utilized RobustScaler to normalize the features, ensuring the model was not biased towards any particular feature.</li>
+                <li><strong>Class Imbalance Handling:</strong> The dataset was highly imbalanced, with only a small fraction of the data representing attacks. I employed Synthetic Minority Over-sampling Technique (SMOTE) to generate synthetic samples for the minority class, thereby balancing the dataset and mitigating model bias.</li>
+                <li><strong>Graph Construction:</strong>The dataset was converted into a graph structure where each node represented a network packet and edges represented temporal relationships and data flow between packets. This transformation enabled the model to learn from the connections within the data, which is crucial for detecting sophisticated attacks.
+                </li>
+                <li><strong>Entropy Computing:</strong> I utilized Shannon entropy and Renyi entropy for feature engineering, calculating the uncertainty and diversity of network packets to enrich the feature set. This allowed the model to capture subtle differences between normal and attack traffic, improving detection accuracy.</li>            </ul>
+        </section>
+
+        <section id="model-architecture">
+            <h2>Model Architecture</h2>
+            <div class="architecture-section">
+                <h3>GraphSAGE (Graph Sample and Aggregate):</h3>
+                <ul>
+                    <li>
+                        <strong>Layer 1:</strong> Aggregated features from the immediate neighbors of each node using a mean aggregation strategy. This layer captured local contextual information, essential for understanding packet interactions within the immediate vicinity.
+                    </li>
+                    <li>
+                        <strong>Layer 2:</strong> Refined node embeddings using the Graph Attention Network (GAT). This layer allowed each neighbor to have different weights based on its importance to the central node, enhancing the model’s ability to focus on critical features when classifying packets.
+                    </li>
+                </ul>
+            </div>
+            <div class="architecture-section">
+                <h3>Graph Attention Network (GAT):</h3>
+                <ul>
+                    <li>
+                        <strong>Layer 3:</strong> Leveraged self-attention mechanisms to weight the importance of each neighbor during aggregation. This mechanism made the model particularly adept at distinguishing between legitimate and malicious traffic.
+                    </li>
+                    <li>
+                        <strong>Final Classification Layer:</strong> After refining node embeddings with GAT, the graph’s overall representation was fed into a fully connected layer for classification. This layer classified whether the input data corresponds to normal traffic or a DDoS attack.
+                    </li>
+                </ul>
+            </div>
+            <img src="model_architecture.png" alt="Model Architecture" class="model-image">
+            <p>This is the architecture of our model, showcasing its layers and connections.</p>
+      
+        
+        <div class="tools-technologies">
+            <h2>Tools & Technologies</h2>
+            <ul>
+                <li><strong>PyTorch:</strong> For model implementation, handling computations, and automatic differentiation.</li>
+                <li><strong>DGL (Deep Graph Library):</strong> Facilitated the implementation of GNNs, making it easier to work with graph structures.</li>
+                <li><strong>scikit-learn:</strong> Utilized for preprocessing the data and evaluating the model's performance.</li>
+            </ul>
+        </div>
+        </section>
+        
+
+        <!-- Implementation -->
+        <section id="implementation">
+            <h2>Implementation</h2>
+            <div class="training">
+                <h3>Model Training:</h3>
+                <ul>
+                    <li>The model was trained on a labeled dataset of network traffic logs. The dataset was split into training (80%) and validation (20%) sets to ensure robust model training and evaluation.</li>
+                    <li>An early stopping mechanism was implemented to prevent overfitting by monitoring validation loss and halting the training process when it no longer improved.</li>
+                    <li>Batch Training: To manage computational resources and improve training efficiency, the model was trained using batches. This approach reduced the memory footprint and allowed the model to learn from subsets of the data iteratively.</li>
+                </ul>
+            </div>
+            <div class="challenges">
+                <h3>Challenges:</h3>
+                <ul>
+                    <li><strong>Computational Complexity:</strong> Handling the graph’s structure required significant computational power. To address this, I optimized the model’s architecture and utilized GPU acceleration, allowing for efficient training and inference.</li>
+                    <li><strong>Data Imbalance:</strong> The dataset was heavily imbalanced, with attacks making up only a small fraction of the total data. SMOTE was crucial in generating synthetic samples for the minority class, helping the model learn to detect attacks more effectively.</li>
+                    <li><strong>Real-Time Constraints:</strong> Ensuring that the model could perform predictions in real-time was critical. I optimized the model architecture to ensure minimal latency, allowing for timely decision-making in a production environment.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Outcomes -->
+        <section id="outcomes-impact">
+            <h2>Outcomes and Impact</h2>
+            <div class="improved-accuracy">
+                <h3>Improved Detection Accuracy:</h3>
+                <p>The GNN-based model achieved a significant increase in detection accuracy, with an F1 score of 95%. This was a 10% improvement over traditional methods, demonstrating the model's ability to capture complex patterns within network traffic effectively.</p>
+            </div>
+            <div class="scalability">
+                <h3>Scalability:</h3>
+                <p>The model’s architecture was designed with scalability in mind, capable of handling large volumes of network traffic efficiently. This scalability made the model suitable for deployment in enterprise environments with high network traffic, ensuring its relevance and applicability in real-world scenarios.</p>
+            </div>
+            <div class="efficiency">
+                <h3>Efficiency:</h3>
+                <p>By leveraging GNNs, the system could process network data quickly with minimal latency, essential for real-time applications. This efficiency not only improved the security posture of the network but also reduced the operational impact of potential attacks.</p>
+            </div>
+            <div class="reflection">
+                <h3>Reflection:</h3>
+                <p>This project provided valuable insights into the integration of graph-based machine learning techniques into cybersecurity solutions. It reinforced the importance of combining advanced technologies with practical problem-solving to create impactful, real-world solutions.</p>
+            </div>
+        </section>
+        
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>This case study provides a detailed narrative of how a graph-based machine learning model can be effectively applied to enhance network security. It showcases my ability to tackle complex challenges using cutting-edge technologies, demonstrating the real-world impact of machine learning in cybersecurity. The project not only improved detection capabilities but also strengthened my passion for integrating AI into practical applications. The challenges faced during this project, including computational complexity and data imbalance, were addressed effectively, providing valuable insights into the practical application of machine learning in real-world security scenarios. This experience has further strengthened my passion for leveraging technology to solve complex problems, and I look forward to continuing to explore the frontiers of AI and machine learning.</p>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Navya P S. All rights reserved.</p>
+    </footer>
+</body>
+</html>

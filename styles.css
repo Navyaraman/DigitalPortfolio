@@ -1,0 +1,211 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif; /* Default font for the website */
+    font-size: 16px; /* Base font size for scaling */
+    color: #333333;
+    background-color: #f4f4f4; /* Light background for contrast */
+    line-height: 1.6; /* Comfortable line spacing */
+}
+
+/* Header */
+header {
+    background-color: black; /* Black background */
+    color: #ffffff; /* White text color */
+    padding: 20px 0; /* Spacious padding */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+}
+
+header .logo {
+    font-size: 30px; /* Larger font for the logo */
+    font-weight: bold;
+    color: #ffffff;
+}
+
+header .nav-links {
+    list-style: none; /* Remove default bullets */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header .nav-links li {
+    margin: 0 20px; /* Spacing between navigation items */
+    position: relative;
+}
+
+header .nav-links li:before {
+    content: '•'; /* Custom bullet */
+    position: absolute;
+    left: -20px; /* Position the bullet to the left */
+    color: #00d4ff; /* Blue bullets for navigation */
+    font-size: 22px;
+}
+
+header .nav-links a {
+    color: #c1d6e6;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+header .nav-links a:hover {
+    color: #a3c2d5;
+}
+
+/* Main Content */
+main {
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+/* Headings */
+h1, h2 {
+    font-family: 'Georgia', serif; /* Elegant serif font for headings */
+    text-align: center;
+    color: #0056a0; /* Deep blue color */
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 32px; /* Larger font for main headings */
+}
+
+h2 {
+    font-size: 26px; /* Slightly smaller for subheadings */
+}
+
+/* Paragraphs */
+p {
+    font-size: 17px;
+    line-height: 1.8; /* More line spacing for readability */
+    margin-bottom: 20px;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 35px;
+    padding: 20px;
+    background-color: #eaf2f8; /* Light blue section background */
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+/* Lists */
+ul {
+    list-style: none; /* Remove default bullets globally */
+    padding-left: 0;
+    margin: 0;
+}
+
+li {
+    position: relative; /* Enable custom bullets */
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+section ul li:before {
+    content: '•'; /* Custom bullet */
+    position: absolute;
+    left: -20px; /* Space for bullets */
+    margin-right: 10px; /* Space after bullet */
+    color: #000000; /* Black bullets for sections */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Model Architecture Section */
+#model-architecture {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #eaf2f8; /* Light blue background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center align the content */
+    max-width: 900px; /* Constrain the section width */
+    overflow: hidden; /* Ensure no overflow beyond the box */
+}
+
+#model-architecture h2 {
+    font-family: 'Georgia', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #0056a0;
+    margin-bottom: 15px;
+}
+
+.model-image {
+    width: 100%; /* Ensure the image fits within the container */
+    max-width: 100%; /* Prevent image from exceeding the container width */
+    height: auto; /* Maintain the aspect ratio */
+    max-height: 500px; /* Limit image height to fit in the box */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    margin: 20px 0; /* Add some spacing */
+    display: block; /* Ensure it behaves as a block element */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .nav-links li {
+        margin: 10px 0;
+    }
+
+    main {
+        padding: 20px; /* Reduced padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 28px; /* Adjust heading size for small screens */
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px; /* Adjust text size for readability */
+    }
+
+    .model-image {
+        width: 100%; /* Ensure full width on smaller screens */
+    }
+
+    #model-architecture {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+}
+
+
+
