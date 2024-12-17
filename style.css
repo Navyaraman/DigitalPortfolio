@@ -225,7 +225,9 @@ body {
     font-size: 1rem;
     line-height: 1.6;
     color: #ddd;
-}/* Styles for the case-study layout */
+}
+
+/* Case Studies Layout */
 .case-study-layout {
     display: flex;
     flex-direction: row; /* Aligns items horizontally */
@@ -236,7 +238,6 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-/* Styles for the case-studies section */
 .case-studies {
     flex: 1;
     padding: 20px;
@@ -319,88 +320,196 @@ body {
 
 .contact-info {
     max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 2s ease-in-out;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
 }
 
 .contact-info p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-.contact-info a {
-    color: #00d4ff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-info a:hover {
-    color: #00a4cc;
+    font-size: 1.1rem;
+    margin: 5px 0;
 }
 
 .contact-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-width: 500px;
-    margin: auto;
+    gap: 20px;
 }
 
-.contact-form input, 
-.contact-form textarea, 
-.contact-form button {
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.contact-form input, 
-.contact-form textarea {
-    background: #ddd;
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #00d4ff;
+    outline: none;
 }
 
 .contact-form button {
+    padding: 10px 25px;
+    font-size: 1rem;
     background: #00d4ff;
     color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .contact-form button:hover {
     background: #00a4cc;
+    transform: scale(1.05);
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 15px;
-    background: #000;
+    background: #1c1c1c;
     color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects {
+        padding: 30px;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    .case-study-layout {
+        flex-direction: column;
+    }
+
+    .case-studies .case-study-card {
+        width: 100%;
+    }
+
+    .contact {
+        padding: 30px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .contact-form button {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .about-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects {
+        padding: 20px;
+    }
+
+    .project-card {
+        padding: 15px;
+    }
+
+    .case-study-layout {
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.8rem;
+    }
+
+    .contact-form button {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
 }
 
 /* Animations */
 @keyframes fadeIn {
-    from {
+    0% {
         opacity: 0;
         transform: translateY(20px);
     }
-    to {
+
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes pulse {
-    0%, 100% {
+    0% {
         transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
     }
+
     50% {
         transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
     }
 }
-
