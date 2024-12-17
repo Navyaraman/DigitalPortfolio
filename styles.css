@@ -35,6 +35,7 @@ header .nav-links {
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Wrap links for better mobile experience */
 }
 
 header .nav-links li {
@@ -206,6 +207,3 @@ footer {
         padding: 15px; /* Adjust padding for smaller screens */
     }
 }
-
-
-
