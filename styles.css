@@ -207,3 +207,59 @@ footer {
         padding: 15px; /* Adjust padding for smaller screens */
     }
 }
+/* Center-align the video and caption */
+figure {
+    display: inline-block;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 100%; /* Responsive */
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Soft shadow around the container */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* To ensure everything stays within the rounded corners */
+    background: #f9f9f9; /* Light background to make it pop */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+  }
+  
+  figure:hover {
+    transform: translateY(-10px); /* Slight lift effect */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2); /* Deep shadow on hover */
+  }
+  
+  /* Style the video iframe */
+  iframe {
+    width: 100%;
+    height: 360px; /* Maintain aspect ratio */
+    border: none;
+    border-radius: 8px; /* Optional rounded corners for the video */
+    transition: transform 0.3s ease; /* Smooth transition when hovered */
+  }
+  
+  figure:hover iframe {
+    transform: scale(1.05); /* Zoom effect on hover */
+  }
+  
+  /* Style the caption text */
+  figcaption {
+    margin-top: 15px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    font-weight: 600; /* Slightly bold for emphasis */
+    line-height: 1.5;
+    text-transform: uppercase; /* Makes it look modern and crisp */
+    letter-spacing: 1px; /* Adds space between letters */
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s; /* Fade-in animation for the caption */
+  }
+  
+  /* Keyframe for fade-in animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
